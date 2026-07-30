@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TECH SPARK 2026 - Registration</title>
+</head>
+<body bgcolor="#eef2f5">
+-- Form Container Box -->
+    
+    <table align="center" width="450" bgcolor="#ffffff" border="2" bordercolor="#4a90e2" cellpadding="15">
+        <tr>
+            <td>
+            
+                <table align="center" width="100%" bgcolor="#4a90e2" cellpadding="10">
+                    <tr>
+                        <td align="center">
+                            <font color="#ffffff">
+                                <h2>✨ TECH SPARK 2026 ✨</h2>
+                                <b>National Level Technical Symposium</b>
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+
+                <br>
+
+                
+                <form onsubmit="alert('🎉 Registration Successful!\nThank you for registering for TECH SPARK 2026.'); return false;">
+                    
+                    <!-- 1. Text Box -->
+                    <label><b>Participant Name:</b></label><br>
+                    <input type="text" placeholder="Enter full name" required><br><br>
+
+                    <!-- 2. Password Field -->
+                    <label><b>Passcode / Password:</b></label><br>
+                    <input type="password" placeholder="Create password" required><br><br>
+
+                    <!-- 3. Radio Buttons -->
+                    <label><b>Year of Study:</b></label><br>
+                    <input type="radio" name="year" required> 1st Year
+                    <input type="radio" name="year"> 2nd Year
+                    <input type="radio" name="year"> 3rd Year<br><br>
+
+                    <!-- 4. Select Box -->
+                    <label><b>Select Event:</b></label><br>
+                    <select required>
+                        <option value="">-- Choose Event --</option>
+                        <option>Web Design Clash</option>
+                        <option>Paper Presentation</option>
+                        <option>Code Debugging</option>
+                    </select><br><br>
+
+                    <!-- 5. Checkboxes -->
+                    <label><b>Food Preference:</b></label><br>
+                    <input type="checkbox"> Veg
+                    <input type="checkbox"> Non-Veg<br><br>
+                    <!-- 7. Text Area -->
+                    <label><b>College Address:</b></label><br>
+                    <textarea rows="3" cols="35" placeholder="Enter college name & address"></textarea><br><br>
+
+                    <!-- Action Buttons -->
+                    <p align="center">
+                        <!-- 8. Submit Button -->
+                        <input type="submit" value="Register Now" style="background-color: #28a745; color: white; border: none; padding: 8px 12px; font-weight: bold; cursor: pointer;">
+
+                        <!-- 9. Reset Button -->
+                        <input type="reset" value="Clear" style="background-color: #dc3545; color: white; border: none; padding: 8px 12px; font-weight: bold; cursor: pointer;">
+
+                        <!-- 10. Custom Button -->
+                        <button type="button" onclick="alert('For queries contact: techspark2026@college.ac.in')" style="background-color: #ffc107; color: black; border: none; padding: 8px 12px; font-weight: bold; cursor: pointer;">Help</button>
+                    </p>
+
+                </form>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
