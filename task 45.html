@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>College Web Page</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        /* Default-ah UG and PG sections-ah hide panni vaikirom */
+        #home-section, #ug-section, #pg-section {
+            display: none;
+        }
+
+        /* Target panna section mattum display aagum */
+        #home-section:target,
+        #ug-section:target,
+        #pg-section:target {
+            display: block;
+        }
+
+        /* Default-a page open aagum podhu Home show aaga */
+        #home-section {
+            display: block;
+        }
+
+        /* Active tab display aagum podhu remaining sections-ah hide panna */
+        :target ~ #home-section {
+            display: none;
+        }
+
+        .nav-links a {
+            font-weight: bold;
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Logo (Common for all views) -->
+    <a href="https://www.psgrkcw.ac.in" target="_blank">
+        <img src="psgrkcw-new-logo.png" alt="College Logo" width="100%" height="130">
+    </a>
+    
+    <hr>
+    <h3 align="center">(Autonomous College)</h3>
+    <hr>
+
+    <!-- ================= 1. HOME SECTION ================= -->
+    <div id="home-section">
+        <h3>Courses Offered:</h3>
+        <p class="nav-links">Go to <a href="#ug-section"><b>UG Courses Detail</b></a></p>
+        <p class="nav-links">Go to <a href="#pg-section"><b>PG Courses Detail</b></a></p>
+        
+        <br>
+        <p><b>Contact us:</b> T-422 429 5959</p>
+        <p><b>Infrastructure:</b> World class lab facilities & hostel</p>
+        <hr>
+    </div>
+
+    <!-- ================= 2. UG SECTION ================= -->
+    <div id="ug-section">
+        <h2>UG COURSES OFFERED:</h2>
+        
+        <p><b>B.Com:</b> B.Com CA, B.Com PA, B.Com BA</p>
+        <p><b>BBA:</b> BBA BPM, BBA RM</p>
+        <p><b>B.Sc:</b> B.Sc PHY, B.Sc MATHS, B.Sc CHEMISTRY</p>
+
+        <hr>
+        <p align="center" class="nav-links"><a href="#home-section">Back to Home</a></p>
+        <hr>
+    </div>
+
+    <!-- ================= 3. PG SECTION ================= -->
+    <div id="pg-section">
+        <h2>PG COURSES OFFERED:</h2>
+        
+        <p><b>M.Com, MCA, M.Sc, MBA, MA</b></p>
+
+        <hr>
+        <p align="center" class="nav-links"><a href="#home-section">Back to Home</a></p>
+        <hr>
+    </div>
+
+</body>
+</html>
