@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Single Page GK Quiz</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f4f8; display: flex; justify-content: center; padding: 20px; margin: 0; }
+        .box { background: #fff; padding: 25px; border-radius: 12px; width: 420px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        input[type="text"] { width: 100%; padding: 10px; margin: 8px 0 15px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        .q-block { background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 8px; margin-bottom: 12px; text-align: left; }
+        .q-title { font-weight: bold; font-size: 14px; margin-bottom: 8px; color: #1e293b; }
+        label { display: block; font-size: 13px; margin: 5px 0; cursor: pointer; color: #475569; }
+        button { width: 100%; padding: 10px; background: #16a34a; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 15px; margin-top: 10px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <!-- 1. Name Only Entry -->
+    <div id="loginSection">
+        <h2 style="text-align: center; color: #1e293b; margin-top: 0;">GK Quiz</h2>
+        <p style="text-align: center; color: #64748b; font-size: 14px;">Enter your name to start the quiz</p>
+        
+        <b>Your Name:</b>
+        <input type="text" id="uname" placeholder="Type your name here..." required>
+        <button onclick="startQuiz()">Start Quiz</button>
+    </div>
+
+    <!-- 2. Single Page All Questions -->
+    <div id="quizSection" class="hidden">
+        <h2 style="text-align: center; color: #1e293b; margin-top: 0;">General Knowledge Quiz</h2>
+        <p id="userHead" style="text-align: center; color: #16a34a; font-weight: bold;"></p>
+        
+        <!-- Score Display Area -->
+        <div id="scoreBox" class="hidden" style="text-align: center; background: #dcfce7; padding: 10px; border-radius: 6px; color: #15803d; font-size: 18px; font-weight: bold; margin-bottom: 15px;"></div>
+
+        <form id="quizForm">
+            <div id="questionsContainer"></div>
+            <button type="button" onclick="calculateScore()">Submit All Answers</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        { q: "1. How many days are in a week?", opts: ["5 Days", "7 Days", "10 Days"], ans: 1 },
+        { q: "2. Which is the largest animal on Earth?", opts: ["Elephant", "Blue Whale", "Giraffe"], ans: 1 },
+        { q: "3. How many colors are in a rainbow?", opts: ["7 Colors", "5 Colors", "10 Colors"], ans: 0 },
+        { q: "4. Which planet do we live on?", opts: ["Mars", "Venus", "Earth"], ans: 2 },
+        { q: "5. What is the national bird of India?", opts: ["Peacock", "Crow", "Parrot"], ans: 0 },
+        { q: "6. What is the capital city of India?", opts: ["Mumbai", "New Delhi", "Chennai"], ans: 1 },
+        { q: "7. How many hours are in a single day?", opts: ["12 Hours", "24 Hours", "48 Hours"], ans: 1 },
+        { q: "8. Which shape has 3 sides?", opts: ["Square", "Circle", "Triangle"], ans: 2 },
+        { q: "9. What color is a ripe banana?", opts: ["Red", "Yellow", "Blue"], ans: 1 },
+        { q: "10. Which animal is called King of the Jungle?", opts: ["Tiger", "Lion", "Elephant"], ans: 1 }
+    ];
+
+    function startQuiz() {
+        let name = document.getElementById('uname').value;
+
+        // Verification: Check if name is entered
+        if (name.trim() !== "") {
+            document.getElementById('loginSection').classList.add('hidden');
+            document.getElementById('quizSection').classList.remove('hidden');
+            document.getElementById('userHead').innerText = "Welcome, " + name + "!";
+
+            // Render all 10 questions on the single page
+            let container = document.getElementById('questionsContainer');
+            let html = "";
+            
+            questions.forEach((item, index) => {
+                html += `<div class="q-block">
+                    <div class="q-title">${item.q}</div>`;
+                item.opts.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${index}" value="${optIdx}"> ${opt}</label>`;
+                });
+                html += `</div>`;
+            });
+
+            container.innerHTML = html;
+        } else {
+            alert("Please enter your name first!");
+        }
+    }
+
+    function calculateScore() {
+        let score = 0;
+        questions.forEach((item, index) => {
+            let selected = document.querySelector(`input[name="q${index}"]:checked`);
+            if (selected && parseInt(selected.value) === item.ans) {
+                score++;
+            }
+        });
+
+        // Show Score at the Top
+        let scoreBox = document.getElementById('scoreBox');
+        scoreBox.classList.remove('hidden');
+        scoreBox.innerHTML = `Your Total Score: ${score} / 10`;
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll back up to see score
+    }
+</script>
+
+</body>
+</html>
