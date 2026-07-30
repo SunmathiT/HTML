@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>User Action Validator</title>
+</head>
+<body style="background-color: #f0f4f8; font-family: sans-serif;">
+
+<center>
+    <!-- Center Card Box -->
+    <div style="background-color: #ffffff; width: 380px; padding: 25px; border-radius: 12px; margin-top: 40px; box-shadow: 0px 4px 12px rgba(0,0,0,0.1); text-align: center;">
+        
+        <h2 style="color: #2c3e50; margin-top: 0;">USER ACTION VALIDATOR</h2>
+        <hr style="border: 0; height: 1px; background: #e2e8f0; margin-bottom: 20px;">
+
+        <!-- Input Form -->
+        <form onsubmit="openDialog(event)">
+            <p align="left" style="color: #4a5568; font-weight: bold; margin-bottom: 5px;">Full Name:</p>
+            <input type="text" id="uname" required style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;">
+
+            <p align="left" style="color: #4a5568; font-weight: bold; margin-bottom: 5px;">Email Address:</p>
+            <input type="email" id="uemail" required style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;">
+
+            <p align="left" style="color: #4a5568; font-weight: bold; margin-bottom: 5px;">Select Action Request:</p>
+            <select id="uaction" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; background: white;">
+                <option>Account Activation</option>
+                <option>Data Export Request</option>
+            </select>
+
+            <br><br>
+            <input type="submit" value="Submit Request" style="background-color: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%;">
+        </form>
+
+        <hr style="border: 0; height: 1px; background: #e2e8f0; margin: 20px 0;">
+
+        <!-- Status Box -->
+        <div style="background-color: #f8fafc; padding: 10px; border-radius: 6px; border: 1px dashed #cbd5e1;">
+            <h4 style="margin: 0 0 5px 0; color: #64748b;">STATUS REPORT</h4>
+            <p id="statusMsg" style="margin: 0; font-size: 14px;"><i>Waiting for user input...</i></p>
+        </div>
+
+    </div>
+</center>
+
+<script>
+    function openDialog(event) {
+        event.preventDefault(); // Prevents page reload
+
+        var name = document.getElementById('uname').value;
+        var email = document.getElementById('uemail').value;
+        var action = document.getElementById('uaction').value;
+
+        // Step 1: Confirmation Box
+        var choice = confirm("Hello " + name + "!\nAre you sure you want to proceed with: " + action + "?");
+
+        var statusP = document.getElementById('statusMsg');
+
+        // Step 2: Response Logic
+        if (choice) {
+            alert("Success! Request for " + action + " has been submitted.");
+            statusP.innerHTML = "<b>Status:</b> Request <font color='#16a34a'><b>APPROVED</b></font> for <u>" + name + "</u>";
+        } else {
+            alert("Action Cancelled!");
+            statusP.innerHTML = "<b>Status:</b> Request <font color='#dc2626'><b>CANCELLED</b></font> by user.";
+        }
+    }
+</script>
+
+</body>
+</html>
